@@ -29,6 +29,9 @@ if [ $ISDEFAULT -eq 0 ]; then
 fi
 chown -R nginx: $LOG
 
+PHP_INI=/etc/php.ini
+sed -ri "s/^;date.timezone =.*/date.timezone = \"Asia\/Tokyo\"/g" $PHP_INI
+
 crontab /root/crontab.txt
 
 /etc/init.d/php-fpm start
