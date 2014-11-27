@@ -32,6 +32,16 @@ chown -R nginx: $LOG
 PHP_INI=/etc/php.ini
 sed -ri "s/^;date.timezone =.*/date.timezone = \"Asia\/Tokyo\"/g" $PHP_INI
 
+SO_MONGO=/etc/php.d/30-mongo.ini
+if [ ! -f $SO_MONGO ]; then
+	echo "extension=mongo.so" > $SO_MONGO
+fi
+
+SO_IMAGICK=/etc/php.d/50-imagick.ini
+if [ ! -f $SO_IMAGICK ]; then
+	echo "extension=imagick.so" > $SO_IMAGICK
+fi
+
 crontab /root/crontab.txt
 
 /etc/init.d/php-fpm start

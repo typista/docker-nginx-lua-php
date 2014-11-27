@@ -15,7 +15,8 @@ RUN wget https://raw.githubusercontent.com/typista/docker-nginx-lua-php/master/f
 	yum install -y --enablerepo=remi,remi-php56,epel php-phpunit-PHPUnit php-pecl-xdebug php-pecl-xhprof && \
 	yum install -y --enablerepo=remi,remi-php56,epel ImageMagick ImageMagick-devel && \
     mkdir -p /var/run/nginx/ && \
-	pecl install imagick
+	pecl install imagick && \
+	pecl install mongo
 #EXPOSE 80
 #ENTRYPOINT /etc/services.sh
 
