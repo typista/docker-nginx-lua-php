@@ -1,5 +1,6 @@
 #http://qiita.com/hnakamur/items/0b72590136cece29faee
-FROM typista/nginx-lua:0.6
+#FROM typista/nginx-lua:0.6
+FROM typista/nginx-lua
 RUN wget https://raw.githubusercontent.com/typista/docker-nginx-lua-php/master/files/etc_init.d_nginx -O /root/etc_init.d_nginx && \
 	wget https://raw.githubusercontent.com/typista/docker-nginx-lua-php/master/files/nginx.conf -O /root/nginx.conf && \
 	wget https://raw.githubusercontent.com/typista/docker-nginx-lua-php/master/files/php_exec -O /usr/local/nginx/conf/php_exec && \
