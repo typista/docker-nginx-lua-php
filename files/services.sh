@@ -21,6 +21,9 @@ if [ ! -e $LOG ]; then
 fi
 NGINX_CONF=/usr/local/nginx/conf/nginx.conf
 ISDEFAULT=`grep $HOSTNAME $NGINX_CONF | wc -l`
+if [ -f /root/nginx.conf ]; then
+	mv /root/nginx.conf $NGINX_CONF
+fi
 if [ $ISDEFAULT -eq 0 ]; then
 	sed -ri "s/__HOSTNAME__/$HOSTNAME/g" $NGINX_CONF
 fi
