@@ -29,6 +29,8 @@ if [ $ISDEFAULT -eq 0 ]; then
 fi
 chown -R nginx: $LOG
 
+crontab /root/crontab.txt
+
 /etc/init.d/php-fpm start
 /etc/init.d/nginx start
 /etc/init.d/crond start
