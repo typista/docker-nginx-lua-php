@@ -1,0 +1,10 @@
+location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_pass_header Authorization;
+        fastcgi_param HTTPS on;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_param  HTTP_REFERER  $http_referer;
+        include        fastcgi_params;
+}
+
