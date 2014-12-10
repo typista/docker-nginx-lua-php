@@ -43,6 +43,9 @@ if [ ! -f $CRON_SHELL ]; then
 	wget $URL_GIT/start.sh -O $CRON_SHELL
 	echo "/root/export/monitor_nginx.sh" >> $CRON_SHELL
 fi
+if [ ! -x $CRON_SHELL ]; then
+	chmod +x $CRON_SHELL
+fi
 CRON_TAB=/root/export/crontab.txt
 if [ ! -f $CRON_TAB ];then
 	wget $URL_GIT/crontab.txt -O $CRON_TAB
@@ -70,5 +73,4 @@ fi
 chown -R nginx: $LOG
 crontab $CRON_TAB
 /etc/init.d/php-fpm start
-crontab $CRON_TAB
 /etc/init.d/nginx start
