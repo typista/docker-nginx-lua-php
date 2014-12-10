@@ -18,6 +18,9 @@ else
 		-p $__PORT__:80 \
 		-v /var/www/:/var/www/ \
 		-v /var/log/nginx/:/var/log/nginx/ \
+		-v ${PWD}/export/nginx/conf/:/usr/local/nginx/conf/ \
+		-v ${PWD}/export/nginx/conf.d/:/usr/local/nginx/conf.d/ \
+		-v ${PWD}/export/root/:/root/export/ \
 		$IMAGE
 	BOOT=./container/docker-boot-$__HOSTNAME__.sh
 	BOOT_OFF=./container/docker-boot-off-$__HOSTNAME__.sh
