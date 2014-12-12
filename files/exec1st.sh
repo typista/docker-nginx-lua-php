@@ -38,10 +38,16 @@ if [ ! -f $MONITOR_NGINX ]; then
 	wget $URL_GIT/monitor_nginx.sh -O $MONITOR_NGINX
 	chmod +x $MONITOR_NGINX
 fi
+MONITOR_PHP=/root/export/monitor_php.sh
+if [ ! -f $MONITOR_PHP ]; then
+	wget $URL_GIT/monitor_php.sh -O $MONITOR_PHP
+	chmod +x $MONITOR_PHP
+fi
 CRON_SHELL=/root/export/start.sh
 if [ ! -f $CRON_SHELL ]; then
 	wget $URL_GIT/start.sh -O $CRON_SHELL
-	echo "/root/export/monitor_nginx.sh" >> $CRON_SHELL
+	echo $MONITOR_NGINX >> $CRON_SHELL
+	echo $MONITOR_PHP >> $CRON_SHELL
 fi
 if [ ! -x $CRON_SHELL ]; then
 	chmod +x $CRON_SHELL
@@ -64,6 +70,10 @@ SO_IMAGICK=/etc/php.d/50-imagick.ini
 if [ ! -f $SO_IMAGICK ]; then
 	echo "extension=imagick.so" > $SO_IMAGICK
 fi
+
+FPM=/etc/php-fpm.d/www.conf
+sed -ri "s/^user = apache/user = nginx/g" $FPM
+sed -ri "s/^group = apache/group = nginx/g" $FPM
 
 MONITOR_NGINX=/root/export/monitor_nginx.sh
 if [ ! -f $MONITOR_NGINX ]; then
