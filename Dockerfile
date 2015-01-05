@@ -23,7 +23,7 @@ RUN	wget https://raw.githubusercontent.com/typista/docker-nginx-lua-php/master/f
 	wget http://www.imagemagick.org/download/ImageMagick.tar.gz -O /root/ImageMagick.tar.gz && \
 	cd /root && \
 	tar zxvf ImageMagick.tar.gz && \
-	cd ImageMagick-6.9.0-0 && \
+	cd ImageMagick-6.9.0-2 && \
 	./configure --prefix=/usr/local/ && \
 	make && \
 	make install && \
