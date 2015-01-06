@@ -29,9 +29,8 @@ else
 		$IMAGE
 
 	RESTART=./restart.sh
-	touch $RESTART
-	echo "docker rm -f $__FQDN__" >> $RESTART
-	echo "$0 $__FQDN__ $__PORT__" >> $RESTART
+	echo "docker rm -f $__FQDN__" > $RESTART
+	echo "$0 $__FQDN__ $__PORT__ &" >> $RESTART
 	chmod +x $RESTART
 
 	BOOT=./container/docker-boot-$__HOSTNAME__.sh
